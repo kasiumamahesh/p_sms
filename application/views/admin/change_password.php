@@ -30,7 +30,7 @@
                         <strong class="card-title">Change Password</strong>
                     </div>
                     <div class="card-body">
-                        <form method="" action="" id="change_password" name="change_password">
+                        <form method="post" action="<?php echo base_url('admin/new_password') ?>" id="change_password" name="change_password">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -71,21 +71,21 @@
             cp_old: {
                 validators: {
                     notEmpty: {
-                        message: 'Please enter Name'
+                        message: 'Please enter Password'
                     }
                 }
             },
             cp_new: {
                 validators: {
                     notEmpty: {
-                        message: 'Please enter mobile number'
+                        message: 'Please enter new password'
                     }
                 }
             },
             cp_new_confirm: {
                 validators: {
                     notEmpty: {
-                        message: 'Please enter email id'
+                        message: 'Please enter confirn password'
                     }
                 }
             }

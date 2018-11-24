@@ -22,7 +22,8 @@ class Admin extends In_frontend{
 		}
 			
 		$num_sch=$this->Schedule_model->get_all_Schedules();
-         $num_grps= $this->Admin_model->get_grouplist()	;	
+         $num_grps= $this->Admin_model->get_grouplist()	;
+$data['smscount']=$this->Schedule_model->get_sms_count();		 
 		 $data['ngrps']=count($num_grps);
 		 $data['nschs']=count($num_sch);
 	$this->load->view('admin/index',$data);
@@ -47,10 +48,13 @@ class Admin extends In_frontend{
 	$userid=$this->input->post('email');
 	$password=$this->input->post('password');
 	
+	
 
 	$password=md5($password);
 	
 $row=$this->Admin_model->logincheck($userid,$password);
+ //echo $this->input->post('remember_me');exit;
+
 //echo '<pre>'; print_r($row);exit;
 if(!(count($row)>0)){
 	      $this->session->set_flashdata('error','email or password is incorrect');
@@ -58,6 +62,12 @@ if(!(count($row)>0)){
 	
 }
 $this->session->set_userdata('admindetails',$row);
+if($this->input->post('remember_me')){
+$this->input->set_cookie('remember','yes','360000'); 
+$this->input->set_cookie('username',$this->input->post('email'),'360000'); 
+$this->input->set_cookie('password',$this->input->post('password'),'360000'); 
+	}
+	//echo $this->input->cookie('username'); exit;
 		
 		/*$this->load->view('admin/index');
 	$this->load->view('admin/footer');*/
@@ -608,12 +618,17 @@ public function save_edit_profile(){
 		if($_FILES['ep_profile_pic']['name']!=''){
 					$pic=$_FILES['ep_profile_pic']['name'];
 					move_uploaded_file($_FILES['ep_profile_pic']['tmp_name'], "assets/adminprofilepic/" . $_FILES['ep_profile_pic']['name']);
+				
 
 					}else{
 					$pic=$admin->profile_pic;
 					}
 		$data=array('name'=>$this->input->post('ep_name'),'location'=>$this->input->post('ep_location'),'mobile_no'=>$this->input->post('ep_number'),'login_email'=>$this->input->post('ep_email'),'profile_pic'=>$pic);
 		$status=$this->Admin_model->admin_det_update($data,$id);
+		$admindet=$this->Admin_model->get_admin_details($id);
+		$admindet=(array)$admindet;
+		$this->session->unset_userdata('admindetails');
+		$this->session->set_userdata('admindetails',$admindet);
 		if($status==1){
 			$this->session->set_flashdata('success','profile  updated successfully');
 		redirect('admin');
@@ -630,5 +645,53 @@ else{
 	redirect('login');
 }
 }
+
+public function change_password(){
+	
+	if($this->session->userdata('admindetails')){
+		
+		$this->load->view('admin/change_password');
+		$this->load->view('admin/footer');
+	}
+	else{	redirect('login');}
+	
+}
+public function new_password(){
+	if($this->session->userdata('admindetails')){
+	$this->form_validation->set_rules('cp_old', 'new Password', 'required');
+	$this->form_validation->set_rules('cp_new', 'new Password', 'required|min_length[6]');
+    $this->form_validation->set_rules('cp_new_confirm', 'Confirm Password', 'required|matches[cp_new]');
+ if ($this->form_validation->run() == FALSE)
+                {
+          $this->session->set_flashdata('error',validation_errors());
+	
+                    redirect($_SERVER['HTTP_REFERER']);
+
+               }
+			   $det=$this->session->userdata('admindetails');
+			   $id=$det['admin_id'];
+			   $pwd=$this->input->post('cp_old');
+			   $newpwd=$this->input->post('cp_new');
+			  $flag=$this->Admin_model->check_password($id,$pwd);
+			  if($flag==1){
+				 $flag=$this->Admin_model->set_new_password($id,$newpwd);
+				 if($flag==1){
+					 $this->session->set_flashdata('success','password successfully changed');
+					 redirect('admin/profile');
+				 }
+				 else{
+					 $this->session->set_flashdata('error','your password as sames as old password ,change password');
+					redirect($_SERVER['HTTP_REFERER']);
+				 }
+			  }
+			  else{
+				 $this->session->set_flashdata('error','old password is incorrect enter correct password');
+				   redirect($_SERVER['HTTP_REFERER']);
+
+			  }
+			  
+}
+}
+
 }
 

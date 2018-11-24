@@ -12,7 +12,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                     <li>Campaign Scheduling</li>
                     <li class="active">Add</li>
                 </ol>
@@ -125,9 +125,9 @@
 </div><!-- .content -->
 <script>
   
-	 
+	$(document).ready(function() {
     $('#checkmsg').click(function(){
-		alert('d');
+		
 		if (this.checked) {
         $('#selectmsg').attr('disabled', 'disabled');
 		$('#txtmsg').removeAttr('disabled');
@@ -139,6 +139,18 @@
 		
 		
 	}); 
+	$('#add_schedule').on('submit',function(){
+		sdate=$('#as_sdate').val();
+		edate=$('#as_edate').val();
+		if(new Date(edate) < new Date(sdate))
+            {
+                 alert('end date must be after the date of  start date or same day');
+				 return false;
+                }
+			
+		
+	});
+	});
 
 </script>
 

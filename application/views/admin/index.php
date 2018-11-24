@@ -51,19 +51,19 @@
         </div>
     </div>
 
-   <!-- <div class="col-xl-4 col-lg-6">
+    <div class="col-xl-4 col-lg-6">
         <div class="card text-white bg-flat-color-2">
             <div class="card-body">
                 <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="fa fa-users text-white border-white"></i></div>
                     <div class="stat-content dib">
                         <div class="stat-text text-light">No.of Messages</div>
-                        <div class="stat-digit text-white">961</div>
+                        <div class="stat-digit text-white"><?php echo $smscount?$smscount:0 ;?></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     
   <!--  <div class="col-md-6">
         <div class="card">

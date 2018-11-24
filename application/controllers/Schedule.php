@@ -37,6 +37,11 @@ class Schedule extends In_frontend{
 			}
 			else{
 				$msg=$this->input->post('txtmsg');
+				if($msg==''){
+					$this->session->set_flashdata('error','message cannot be empty');
+                    redirect('admin/addcampaign');
+					
+				}
 				$data=array('template_content'=>$msg,'status'=>2);
 				$msgid=$this->Admin_model->message_save2($data);
 				
@@ -92,6 +97,7 @@ class Schedule extends In_frontend{
 	}
 	public function run_schedules(){
 		$ctime=date('H:m');
+		
 		$ctime=$ctime.':00';
 		
 		$cdate=date('Y-m-d');
@@ -104,6 +110,7 @@ class Schedule extends In_frontend{
           
 		   
 		   $result=$this->Schedule_model->get_current_schedules($ctime,$cdate);
+		   echo print_r($result);exit;
 		   foreach ($result as $row){
 			   $msg=$row->template_content;
 			   $mobile=$row->cont_numbers;
@@ -116,6 +123,9 @@ class Schedule extends In_frontend{
            $server_output = curl_exec ($ch2);
 		  
            curl_close ($ch2);
+		   $gid=$row->group_id;
+		   $count=$row->msgcount;
+		   $this->Schedule_model->sms_count_insert($gid,$count);
 			   
 		   }
 		   //echo '<pre>'; print_r($result);exit;

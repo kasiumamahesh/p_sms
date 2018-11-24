@@ -68,13 +68,17 @@
                         <img class="user-avatar rounded-circle" src="<?php 
 						$admin=$this->session->userdata('admindetails');
 						$pic=$admin['profile_pic'];
-						echo base_url().'assets/adminprofilepic/'.$pic; ?>" alt="User Avatar">
+						if($admin['profile_pic']==''){
+						echo 	base_url().'assets/adminprofilepic/profilepic.png';
+						}
+						else{
+						echo base_url().'assets/adminprofilepic/'.$pic; }?>" alt="User Avatar">
                     </a>
 
                     <div class="user-menu dropdown-menu">
                         <a class="nav-link text-white" href="<?php echo base_url('admin/profile') ;?>"><i class="fa fa-user"></i> My Profile</a>
 
-                        <a class="nav-link text-white" href="change_password.php"><i class="fa fa-cog"></i> Change Password</a>
+                        <a class="nav-link text-white" href="<?php echo base_url('admin/change_password') ;?>"><i class="fa fa-cog"></i> Change Password</a>
 
                         <a class="nav-link text-white" href="<?php echo base_url('login/logout');?>"><i class="fa fa-power-off"></i> Logout</a>
                     </div>

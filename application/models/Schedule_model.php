@@ -37,7 +37,8 @@ $sid=$this->db->insert_id();
 	}
 	public function get_current_schedules($ctime,$cdate){
 		
-		$this->db->select('message_template.template_content,GROUP_CONCAT(group_numbers.cont_number) cont_numbers');
+		$this->db->select('group_tab.group_id,message_template.template_content,GROUP_CONCAT(group_numbers.cont_number) cont_numbers,count(group_numbers.cont_number)
+		 msgcount');
 		$this->db->from('schedule_tab');
         $this->db->join('group_tab','group_tab.group_id=schedule_tab.group_id');
 		$this->db->join('group_numbers','group_tab.group_id=group_numbers.group_id');
@@ -47,7 +48,7 @@ $sid=$this->db->insert_id();
 		$this->db->where('schedule_tab.start_date<=',$cdate);
 		$this->db->where('schedule_tab.end_date>=',$cdate);
 		$this->db->where('s_status',1);
-		$this->db->group_by('message_template.template_content');
+		$this->db->group_by('message_template.template_content,group_tab.group_id');
 		return $this->db->get()->result();
 	}
 	public function get_schedule($sid){
@@ -108,5 +109,16 @@ $sid=$this->db->insert_id();
 		 return ($this->db->affected_rows() > 0) ? 1 : 0; 
 			
 		}
-	
+		public function sms_count_insert($gid,$count){
+			$data=array('group_id'=>$gid,'no_smses'=>$count);
+			$this->db->insert('sms_count_tab',$data);
+			 return ($this->db->affected_rows() > 0) ? 1 : 0; 
+		}
+	  public function get_sms_count(){
+		  $this->db->select('sum(no_smses) cnt');
+		  $this->db->from('sms_count_tab');
+		  $res=$this->db->get()->row();
+		  return $res->cnt;
+		  
+	  }
 	}

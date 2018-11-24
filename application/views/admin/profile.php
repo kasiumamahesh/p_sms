@@ -12,7 +12,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="<?php echo base_url('admin'); ?>">Home</a></li>
                     <li>My Profile</li>
                 </ol>
             </div>
@@ -36,7 +36,14 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="assets/img/admin.jpg" alt="Card image cap">
+                                    <img class="rounded-circle mx-auto d-block" src="<?php 
+						$adm=$this->session->userdata('admindetails');
+						$pic=$adm['profile_pic'];
+						if($adm['profile_pic']==''){
+						echo 	base_url().'assets/adminprofilepic/profilepic.png';
+						}
+						else{
+						echo base_url().'assets/adminprofilepic/'.$pic; }?>" alt="Card image cap">
                                     <h5 class="text-sm-center mt-2 mb-1"><?php echo $admin->name;?></h5>
                                 </div>
                             </div>

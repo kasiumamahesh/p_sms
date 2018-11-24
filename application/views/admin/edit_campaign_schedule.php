@@ -143,6 +143,17 @@
 		
 		
 	}); 
+	$('#add_schedule').on('submit',function(){
+		sdate=$('#es_sdate').val();
+		edate=$('#es_edate').val();
+		if(new Date(edate) < new Date(sdate))
+            {
+                 alert('end date must be after the date of  start date or same day');
+				 return false;
+                }
+			
+		
+	});
 
 </script>
 

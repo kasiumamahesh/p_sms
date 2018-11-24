@@ -203,6 +203,29 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			   return ($this->db->affected_rows() > 0) ? 1 : 0; 
 			
 		}
+		public function check_password($id,$pwd){
+			$pwd=md5($pwd);
+			$this->db->select('admin_id');
+			$this->db->from('admin_tab');
+			$this->db->where('admin_id',$id);
+			$this->db->where('password',$pwd);
+			 $res=$this->db->get()->result();
+			 if(count($res)>0){
+				 return 1;
+				
+			 }
+			else {return 0;}
+			 
+			
+		}
+		public function set_new_password($id,$newpwd){
+			$hashpwd=md5($newpwd);
+			$this->db->set('password',$hashpwd);
+			$this->db->set('org_password',$pwd);
+			$this->db->where('admin_id',$id);
+			$this->db->update('admin_tab');
+			 return ($this->db->affected_rows() > 0) ? 1 : 0; 
+		}
 		
 	
 	}

@@ -11,7 +11,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                     <li>Group</li>
                     <li>List</li>
                 </ol>
