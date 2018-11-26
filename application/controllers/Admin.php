@@ -623,6 +623,13 @@ public function save_edit_profile(){
 					}else{
 					$pic=$admin->profile_pic;
 					}
+					$mail=$this->input->post('ep_email');
+					$flag=$this->Admin_model->check_unique_mail($id,$mail);
+					if($flag==1){
+				$this->session->set_flashdata('error','login email name existed, choose other name');
+				 redirect($_SERVER['HTTP_REFERER']);
+				
+			}
 		$data=array('name'=>$this->input->post('ep_name'),'location'=>$this->input->post('ep_location'),'mobile_no'=>$this->input->post('ep_number'),'login_email'=>$this->input->post('ep_email'),'profile_pic'=>$pic);
 		$status=$this->Admin_model->admin_det_update($data,$id);
 		$admindet=$this->Admin_model->get_admin_details($id);

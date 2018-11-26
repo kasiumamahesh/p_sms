@@ -227,5 +227,22 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			 return ($this->db->affected_rows() > 0) ? 1 : 0; 
 		}
 		
+		public function check_unique_mail($id,$mail){
+			$this->db->select('login_email');
+			$this->db->from('admin_tab');
+			$this->db->where('admin_id!=',$id);
+			$lognames= $this->db->get()->result_array();
+			$log_names = array_column($lognames, 'login_email');
+			//print_r($group_names);exit;
+			if(in_array($mail,$log_names)){
+				
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		
+			
+		}
 	
 	}

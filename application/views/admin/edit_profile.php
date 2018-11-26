@@ -102,7 +102,18 @@
                         message: 'Please enter number'
                     }
                 }
-            }
+            },
+			ep_profile_pic:{
+				validators: {
+                    file: {
+                       extension: 'jpg,png,jpeg',
+                    type: 'image/jpg, image/png,image/jpeg',
+					message: 'file type format is not valid'
+                    }
+                }
+				
+				
+			}
             }
         })
 

@@ -17,23 +17,16 @@ public function __construct()
 	}
 
 public function test(){
-	$emailConfig = [
-            'protocol' => 'smtp', 
-            'smtp_host' => 'ssl://smtp.googlemail.com', 
-            'smtp_port' => 465, 
-            'smtp_user' => 'kasimahesh34@gmail.com', 
-            'smtp_pass' => '9866482830', 
-            'mailtype' => 'html', 
-            'charset' => 'iso-8859-1'
-        ];
-$this->load->library('email',$emailConfig); 
-$this->email->from('kasimahesh34@example.com', 'Sender Name');
-$this->email->to('kasiphp5@example.com','Recipient Name');
+	
+$this->load->library('email'); 
+$this->email->from('kasimahesh34@gmail.com', 'Sender Name');
+$this->email->to('kasiphp5@gmail.com','Recipient Name');
 $this->email->subject('Your Subject');
 $this->email->message('Your Message'); 
 try {
     $this->email->send();
     echo 'Message has been sent.';
+	echo $this->email->print_debugger();
 } catch(Exception $e) {
     echo $e->getMessage();
 }
