@@ -58,7 +58,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </a>
-                                            <a href="<?php echo base_url('admin/delete_plan/').base64_encode($row->plan_id);?>">
+                                            <a href="<?php echo base_url('admin/delete_plan/').base64_encode($row->plan_id);?>" class='confirmation'>
                                                 <button type="button" class="btn btn-sm social btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
@@ -124,4 +124,10 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script type="text/javascript">
+    $('.confirmation').on('click', function () {
+        return confirm('Are you sure?');
+    });
+</script>
+
 

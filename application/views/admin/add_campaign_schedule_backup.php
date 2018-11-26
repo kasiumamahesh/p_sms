@@ -36,7 +36,19 @@
 							
 							
 							<input type='hidden' value='<?php echo $plans->plan_id ?>' name="as_type">
-                            
+                              <!--  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type</label>
+										
+                                         <select class="form-control" name="as_type" id="as_type">
+                                            <option value="" disabled selected>Select</option>
+											<?php foreach($plans as $plan):?>
+                                            <option value="<?php echo $plan->plan_id ?>"><?php echo $plan->plan_name ?></option>
+											<?php endforeach;?>
+                                        
+                                        </select>
+                                    </div>
+                                </div>-->
                            <!--     <div class="col-md-6">
                                     <div class="form-group">
                                         <label>SMS's / Day</label>

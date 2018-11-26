@@ -105,7 +105,7 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			$this->db->select('*');
 			$this->db->from('sms_plan_type');
 			$this->db->where('status',1);
-			return $this->db->get()->result();
+			return $this->db->get()->row();
 		}
 		public function get_plan($pid){
 			$this->db->select('*');
@@ -242,6 +242,12 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 				return 0;
 			}
 		
+			
+		}
+		public function delete_temp_group($group_id){
+			$this->db->where('group_id',$group_id);
+			$this->db->delete('group_tab');
+			return 1;
 			
 		}
 	

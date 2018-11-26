@@ -46,7 +46,7 @@
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Type</th>
+                                        <!--<th>Type</th>-->
                                         <th>Time</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
@@ -60,7 +60,7 @@
 								<?php if($status==1){$count=1;foreach($clist as $list):?>
                                     <tr>
                                         <td><?php echo $count;?></td>
-                                        <td><?php echo $list->plan_name; ?></td>
+                                        <!--<td><?php echo $list->plan_name; ?></td>-->
                                         <td><?php echo $list->send_time;?></td>
                                         <td><?php echo $list->start_date; ?></td>
                                         <td><?php echo $list->end_date; ?></td>
@@ -130,7 +130,7 @@
                                                     <i class="fa fa-check"></i>
                                                 </button>
                                             </a>
-                                            <a href="<?php echo base_url('schedule/delete_campaign_schedule/').base64_encode($list->schedule_id)?>">
+                                            <a href="<?php echo base_url('schedule/delete_campaign_schedule/').base64_encode($list->schedule_id)?>" class='confirmation'>
                                                 <button type="button" class="btn btn-sm social btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
@@ -156,4 +156,9 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script type="text/javascript">
+    $('.confirmation').on('click', function () {
+        return confirm('Are you sure?');
+    });
+</script>
 

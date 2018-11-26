@@ -59,7 +59,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </button>
                                             </a>
-                                            <a href="<?php echo base_url('admin/groupdelete/').base64_encode($gp->group_id);?>">
+                                            <a href="<?php echo base_url('admin/groupdelete/').base64_encode($gp->group_id);?>" class='confirmation'>
                                                 <button type="button" class="btn btn-sm social btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
@@ -124,4 +124,9 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script type="text/javascript">
+    $('.confirmation').on('click', function () {
+        return confirm('Are you sure?');
+    });
+</script>
 
