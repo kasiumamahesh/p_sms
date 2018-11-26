@@ -96,8 +96,10 @@ class Schedule extends In_frontend{
 		}
 	}
 	public function run_schedules(){
-		$ctime=date('H:m');
-		
+		date_default_timezone_set('Asia/Kolkata');
+		//$ctime=date('H:i');
+	
+		$ctime='17:58';
 		$ctime=$ctime.':00';
 		
 		$cdate=date('Y-m-d');
@@ -110,7 +112,7 @@ class Schedule extends In_frontend{
           
 		   
 		   $result=$this->Schedule_model->get_current_schedules($ctime,$cdate);
-		   echo print_r($result);exit;
+		   //echo print_r($result);exit;
 		   foreach ($result as $row){
 			   $msg=$row->template_content;
 			   $mobile=$row->cont_numbers;

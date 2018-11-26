@@ -37,8 +37,20 @@
                         <form method="post" action="<?php echo base_url('schedule/save_edit_campaign');?>" id="add_schedule">
                             <div class="row">
 							<input type='hidden' value="<?php echo $sch->schedule_id;?>" name='s_id'>
-							<input type='hidden' value='<?php echo $plans->plan_id ?>' name="es_type">
-                               
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <select class="form-control" name="es_type" id="es_type">
+                                          
+											<?php foreach($plans as $plan):?>
+                                            <option value="<?php echo $plan->plan_id ?>"  <?php if($plan->plan_id==$sch->sms_type){echo 'selected';}?>><?php echo $plan->plan_name ?></option>
+											<?php endforeach;?>
+                                          <!--  <option value="">xxxxx</option>
+                                            <option value="">xxxxx</option>
+                                            <option value="">xxxxx</option>-->
+                                        </select>
+                                    </div>
+                                </div>
                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>SMS's / Day</label>

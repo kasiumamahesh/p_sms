@@ -255,7 +255,8 @@ if(!empty($data)) {
 			
 }
 			else{
-					$this->session->set_flashdata('success','group added successfully without contact numbers');
+				   $this->Admin_model->delete_temp_group($group_id);
+					$this->session->set_flashdata('success','group  cannot be added without contact numbers');
 					redirect('admin/listgroup');
 				
 			}

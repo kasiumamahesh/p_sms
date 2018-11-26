@@ -12,9 +12,9 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="<?php echo base_url('admin');?>">Home</a></li>
                     <li>Campaign Scheduling</li>
-                    <li>Edit</li>
+                    <li class="active">Add</li>
                 </ol>
             </div>
         </div>
@@ -28,84 +28,84 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="campaign_list.php" class="btn btn-sm btn-info">
-                            <i class="fa fa-chevron-left"></i>
-                        </a>
-                        <strong class="card-title">Edit Schedule</strong>
+                        <strong class="card-title">Add Schedule</strong>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="<?php echo base_url('schedule/save_edit_campaign');?>" id="add_schedule">
+                        <form method="post" action="<?php echo base_url('Schedule/save_schedule');?>" id="add_schedule">
                             <div class="row">
-							<input type='hidden' value="<?php echo $sch->schedule_id;?>" name='s_id'>
-							<input type='hidden' value='<?php echo $plans->plan_id ?>' name="es_type">
-                               
-                               <!-- <div class="col-md-6">
+							
+							
+							<input type='hidden' value='<?php echo $plans->plan_id ?>' name="as_type">
+                            
+                           <!--     <div class="col-md-6">
                                     <div class="form-group">
                                         <label>SMS's / Day</label>
-                                        <input type="text" id="es_sms_day" name="es_sms_day" placeholder="Enter no.of sms's per day" class="form-control">
+                                        <input type="text" id="as_sms_day" name="as_sms_day" placeholder="Enter no.of sms's per day" class="form-control">
                                     </div>
-                                </div>-->
+                                </div> -->
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-control-label">Time</label>
-                                        <input type="time" id="es_time" name="es_time" value='<?php echo $sch->send_time; ?>'placeholder="" class="form-control">
+                                        <input type="time" id="as_time" name="as_time" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-control-label">Start Date</label>
-                                        <input type="date" id="es_sdate" value='<?php echo $sch->start_date;?>' name="es_sdate" placeholder="" class="form-control">
+                                        <input type="date" id="as_sdate" name="as_sdate" placeholder="" class="form-control">
+                                        <!-- <div class="cal-icon">
+											<input class="form-control datetimepicker" type="text" value="12/10/2018">
+										</div> -->
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-control-label">End Date</label>
-                                        <input type="date" id="es_edate" name="es_edate" value='<?php echo $sch->end_date;?>' placeholder="" class="form-control">
+                                        <input type="date" id="as_edate" name="as_edate" placeholder="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Group</label>
                                         <select class="form-control" name="gid" id="">
-                                          
-                                            	<?php foreach($groups as $group):?>
-                                            <option value="<?php echo $group->group_id; ?>" <?php if($group->group_id==$sch->group_id){echo 'selected';}?>><?php echo $group->group_name;?></option>
+                                            <option value="" disabled selected>Select</option>
+											<?php foreach($groups as $group):?>
+                                            <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
 											<?php endforeach;?>
                                            <!-- <option value="">xxxxx</option>
                                             <option value="">xxxxx</option>-->
                                         </select>
                                     </div>
                                 </div>
-                               <!-- <div class="col-md-6">
-                                    <div class="form-group" name="" id="">
+                                <div class="col-md-6">
+                                   <!-- <div class="form-group" name="" id="">
                                         <label class="form-control-label">Group</label>
                                         <input type="text" id="" name="" placeholder="Enter group name" class="form-control">
-                                    </div>
-                                </div>-->
+                                    </div>-->
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Message</label>
-                                        <select class="form-control" name="mid" id="selectmsg"  <?php if($msgstatus==1){ echo 'disabled';} ?>>
-                                           
+                                        <select class="form-control" name="mid" id="selectmsg">
+                                            <option value="" disabled selected>Select</option>
 											<?php foreach($msgs as $msg):?>
-                                            <option value="<?php echo $msg->template_id;?>" <?php if($msg->template_id==$sch->template_id){echo 'selected';}?>><?php echo $msg->template_name;?></option>
+                                            <option value="<?php echo $msg->template_id;?>"><?php echo $msg->template_name;?></option>
 											<?php endforeach;?>
-                                           <!-- <option value="">xxxxx</option>
-                                            <option value="">xxxxx</option>
+                                            <!--<option value="">xxxxx</option>
                                             <option value="">xxxxx</option>-->
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
-											<input type="checkbox" id='checkmsg' name="" value="" <?php if($msgstatus==1){ echo 'checked';} ?>>
-
+									<input type="checkbox" id='checkmsg' name="" value="">
                                         <label class="form-control-label">Message</label>
-                                        <textarea id="txtmsg" name="txtmsg" placeholder="Enter message here..." class="form-control" <?php if($msgstatus==0){echo 'disabled';} ?>><?php if($msgstatus==1){ echo $msgdet->template_content;} ?></textarea>
+                                        <textarea id="txtmsg" name="txtmsg" placeholder="Enter message here..." class="form-control" disabled></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
+                            <button type="submit" name='sch' value='1' class="btn btn-sm btn-success">Start</button>
+                           <button type="submit"  name='sch'  value='2' class="btn btn-sm btn-primary">Save</button>
                             <button type="reset" class="btn btn-sm btn-danger">Reset</button>
                         </form>
                     </div>
@@ -114,12 +114,11 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
-
 <script>
   
-	 
+	$(document).ready(function() {
     $('#checkmsg').click(function(){
-		//alert('d');
+		
 		if (this.checked) {
         $('#selectmsg').attr('disabled', 'disabled');
 		$('#txtmsg').removeAttr('disabled');
@@ -132,8 +131,8 @@
 		
 	}); 
 	$('#add_schedule').on('submit',function(){
-		sdate=$('#es_sdate').val();
-		edate=$('#es_edate').val();
+		sdate=$('#as_sdate').val();
+		edate=$('#as_edate').val();
 		if(new Date(edate) < new Date(sdate))
             {
                  alert('end date must be after the date of  start date or same day');
@@ -142,50 +141,51 @@
 			
 		
 	});
+	});
 
 </script>
 
 
 <script>
     $(document).ready(function() {
-    $('#edit_schedule').bootstrapValidator({
+        $('#add_schedule').bootstrapValidator({
 
-        fields: {
-            es_type: {
-                validators: {
-                    notEmpty: {
-                        message: 'Type is required'
+            fields: {
+                as_type: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Type is required'
+                        }
                     }
-                }
-            },
-            es_sms_day: {
-                validators: {
-                    notEmpty: {
-                        message: 'SMS/day is required'
+                },
+                as_sms_day: {
+                    validators: {
+                        notEmpty: {
+                            message: 'SMS/day is required'
+                        }
                     }
-                }
-            },
-            es_time: {
-                validators: {
-                    notEmpty: {
-                        message: 'Time is required'
+                },
+                as_time: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Time is required'
+                        }
                     }
-                }
-            },
-            es_sdate: {
-                validators: {
-                    notEmpty: {
-                        message: 'Start date is required'
+                },
+                as_sdate: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Start date is required'
+                        }
                     }
-                }
-            },
-            es_edate: {
-                validators: {
-                    notEmpty: {
-                        message: 'End date is required'
+                },
+                as_edate: {
+                    validators: {
+                        notEmpty: {
+                            message: 'End date is required'
+                        }
                     }
-                }
-            },
+                },
             }
         })
 
