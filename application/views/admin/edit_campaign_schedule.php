@@ -34,7 +34,7 @@
                         <strong class="card-title">Edit Schedule</strong>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="<?php echo base_url('schedule/save_edit_campaign');?>" id="add_schedule">
+                        <form method="post" action="<?php echo base_url('schedule/save_edit_campaign');?>" id="edit_schedule">
                             <div class="row">
 							<input type='hidden' value="<?php echo $sch->schedule_id;?>" name='s_id'>
 							<input type='hidden' value='<?php echo $plans->plan_id ?>' name="es_type">
@@ -66,10 +66,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Group</label>
-                                        <select class="form-control" name="gid" id="">
-                                          
+                                        <select class="form-control" name="gid[]" id="" multiple>
+                                              <option value="" disabled selected>Select</option>
                                             	<?php foreach($groups as $group):?>
-                                            <option value="<?php echo $group->group_id; ?>" <?php if($group->group_id==$sch->group_id){echo 'selected';}?>><?php echo $group->group_name;?></option>
+                                            <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
 											<?php endforeach;?>
                                            <!-- <option value="">xxxxx</option>
                                             <option value="">xxxxx</option>-->
@@ -147,7 +147,7 @@
 
 
 <script>
-    $(document).ready(function() {
+  
     $('#edit_schedule').bootstrapValidator({
 
         fields: {
@@ -186,8 +186,15 @@
                     }
                 }
             },
+		       'gid[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'group is required'
+                    }
+                }
+            },
             }
-        })
+        });
 
-    });
+   
 </script>

@@ -18,7 +18,7 @@ class Schedule extends In_frontend{
 		if($this->session->userdata('admindetails'))
 		{
 			 $this->form_validation->set_rules('as_type', 'plan', 'required');
-	         $this->form_validation->set_rules('gid', 'group', 'required');
+	         $this->form_validation->set_rules('gid[]', 'group', 'required');
 			 $this->form_validation->set_rules('as_time', 'time', 'required');
 	         $this->form_validation->set_rules('as_sdate', 'start date', 'required');
 			  $this->form_validation->set_rules('as_edate', 'end date', 'required');
@@ -28,9 +28,22 @@ class Schedule extends In_frontend{
                     redirect('admin/addcampaign');
 
                }
+			   date_default_timezone_set('Asia/Kolkata');
+			   $curdate=Date('Y-m-d');
+			  
+			 
+			   $sendtime=$this->input->post('as_time');
+			   $sdate=$this->input->post('as_sdate');
+			$edate=$this->input->post('as_edate');
+			   if($sdate<$curdate || $edate<$curdate){
+				     $this->session->set_flashdata('error','start date or enddate must be the today or future date');
+                    redirect('admin/addcampaign');
+			   }
 			  
 			$planid=$this->input->post('as_type');
 			$gpid=$this->input->post('gid');
+			//echo $gpid ; exit;
+			
 			if(isset($_POST['mid'])){
 			$msgid=$this->input->post('mid');
 			
@@ -46,9 +59,10 @@ class Schedule extends In_frontend{
 				$msgid=$this->Admin_model->message_save2($data);
 				
 			}
+			
+			
 			$sendtime=$this->input->post('as_time');
-			$sdate=$this->input->post('as_sdate');
-			$edate=$this->input->post('as_edate');
+			
 			//echo $sdate; exit;
 			if($this->input->post('sch')==1){
 				$status=1;
@@ -56,9 +70,20 @@ class Schedule extends In_frontend{
 				$status=2;
 			}
 			
-			$ins_data=array('group_id'=>$gpid,'sms_type'=>$planid,
+			$ins_data=array('sms_type'=>$planid,
 			'send_time'=>$sendtime,'start_date'=>$sdate,'end_date'=>$edate,'template_id'=>$msgid,'s_status'=>$status);
 			$sid=$this->Schedule_model->save_schedule($ins_data);
+			foreach($gpid as $id){
+				$group_data[]=array('schedule_id'=>$sid,'group_id'=>$id);
+			}
+		$flag=$this->Schedule_model->insert_schedule_groups($group_data);
+		if($flag==0){
+			$this->session->set_flashdata('error','group not  added ');
+                    redirect('admin/addcampaign');
+			
+		}
+		
+			
 			$smses=$this->Schedule_model->get_smses($planid);
 			//echo $smses; exit;
 			$arrtime=explode(':',$sendtime);
@@ -97,9 +122,9 @@ class Schedule extends In_frontend{
 	}
 	public function run_schedules(){
 		date_default_timezone_set('Asia/Kolkata');
-		$ctime=date('H:i');
+		//$ctime=date('H:i');
 	
-	
+	$ctime='14:00';
 		$ctime=$ctime.':00';
 		
 		$cdate=date('Y-m-d');
@@ -193,17 +218,26 @@ class Schedule extends In_frontend{
 			$sid=$this->input->post('s_id');
 			//echo " ".$sid; exit;
 			$ins_data=array(
-			'group_id'=>$gpid,
+			
 			'sms_type'=>$planid,
 			'send_time'=>$sendtime,
 			'start_date'=>$sdate,
 			'end_date'=>$edate,
 			'template_id'=>$msgid
 			);
-			//echo '<pre>'; print_r($ins_data); exit;
+			foreach($gpid as $id){
+				$group_data[]=array('schedule_id'=>$sid,'group_id'=>$id);
+			}
+			$this->Schedule_model->delete_schedule_groups($sid);
+		$flag=$this->Schedule_model->insert_schedule_groups($group_data);
+		if($flag==0){
+			$this->session->set_flashdata('error','groups not  added ');
+                    redirect('admin/addcampaign');
+			
+		}
+		
 			$update=$this->Schedule_model->update_schedule($ins_data,$sid);
-			//echo $this->db->last_query();
-			//echo '<pre>'; print_r($update); exit;
+			
 			$smses=$this->Schedule_model->get_smses($planid);
 			//echo $smses; exit;
 			$arrtime=explode(':',$sendtime);

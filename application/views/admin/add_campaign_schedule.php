@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Group</label>
-                                        <select class="form-control" name="gid" id="">
+                                        <select class="form-control" name="gid[]" id="" multiple>
                                             <option value="" disabled selected>Select</option>
 											<?php foreach($groups as $group):?>
                                             <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
@@ -86,7 +86,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Message</label>
-                                        <select class="form-control" name="mid" id="selectmsg">
+                                        <select class="form-control" name="mid" id="selectmsg"  >
                                             <option value="" disabled selected>Select</option>
 											<?php foreach($msgs as $msg):?>
                                             <option value="<?php echo $msg->template_id;?>"><?php echo $msg->template_name;?></option>
@@ -116,7 +116,7 @@
 </div><!-- .content -->
 <script>
   
-	$(document).ready(function() {
+	
     $('#checkmsg').click(function(){
 		
 		if (this.checked) {
@@ -141,13 +141,13 @@
 			
 		
 	});
-	});
+	
 
 </script>
 
 
 <script>
-    $(document).ready(function() {
+    
         $('#add_schedule').bootstrapValidator({
 
             fields: {
@@ -186,8 +186,15 @@
                         }
                     }
                 },
+				'gid[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'group is required'
+                    }
+                }
             }
-        })
+            }
+        });
 
-    });
+  
 </script>

@@ -65,7 +65,7 @@
                                         <td><?php echo $list->start_date; ?></td>
                                         <td><?php echo $list->end_date; ?></td>
                                         <td><?php echo $list->sms_per_day ;?></td>
-                                        <td><?php echo $list->group_name ;?></td>
+                                        <td><?php echo $list->groupnames ;?></td>
                                         <td><?php echo $list->template_content;?></td>
                                         <td>
                                           <!--  <a href="#">
@@ -117,7 +117,7 @@
                                         <td><?php echo $list->start_date; ?></td>
                                         <td><?php echo $list->end_date; ?></td>
                                         <td><?php echo $list->sms_per_day ;?></td>
-                                        <td><?php echo $list->group_name ;?></td>
+                                        <td><?php echo $list->groupnames ;?></td>
                                         <td><?php echo $list->template_content;?></td>
                                         <td>
                                           <!--  <a href="#">

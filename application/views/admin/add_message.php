@@ -58,7 +58,7 @@
 
 
 <script>
-    $(document).ready(function() {
+
     $('#add_message').bootstrapValidator({
 
         fields: {
@@ -79,5 +79,5 @@
             }
         })
 
-    });
+ 
 </script>
