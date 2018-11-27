@@ -12,7 +12,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="<?php echo base_url('admin'); ?>">Home</a></li>
                     <li>Group</li>
                     <li>Edit</li>
                 </ol>
@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="group_list.php" class="btn btn-sm btn-info">
+                        <a href="<?php echo base_url('admin/listgroup'); ?>" class="btn btn-sm btn-info">
                             <i class="fa fa-chevron-left"></i>
                         </a>
                         <strong class="card-title">Edit Group</strong>
