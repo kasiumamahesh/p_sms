@@ -97,9 +97,9 @@ class Schedule extends In_frontend{
 	}
 	public function run_schedules(){
 		date_default_timezone_set('Asia/Kolkata');
-		//$ctime=date('H:i');
+		$ctime=date('H:i');
 	
-		$ctime='17:58';
+	
 		$ctime=$ctime.':00';
 		
 		$cdate=date('Y-m-d');
@@ -247,7 +247,7 @@ class Schedule extends In_frontend{
 			$sid=base64_decode($this->uri->segment(3));
 			$status=$this->Schedule_model->delete_schedule($sid);
 				if($status==1){
-				$this->session->set_flashdata('success','campaign delted successfully');
+				$this->session->set_flashdata('success','campaign deleted successfully');
 		redirect('admin/listcampaign');
 			}
 			else{

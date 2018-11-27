@@ -33,6 +33,7 @@ $data['smscount']=$this->Schedule_model->get_sms_count();
 	
 	}
 	public function checking(){
+		
 			
 	 $this->form_validation->set_rules('email', 'user name', 'required');
 	  $this->form_validation->set_rules('password', 'password', 'required');
@@ -75,6 +76,7 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 	
 	redirect('admin');
 	
+		
 	
 	
 }
@@ -86,6 +88,9 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			redirect('admin');
 		}
+		else{
+	redirect('login');
+           }
 		
 		
 	}
@@ -101,6 +106,9 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+		else{
+	redirect('login');
+               }
 		}
 		public function listcampaign(){
 		if($this->session->userdata('admindetails')){
@@ -126,6 +134,9 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+		else{
+	redirect('login');
+}
 		}
 		public function  addgroup(){
 		if($this->session->userdata('admindetails')){
@@ -134,7 +145,11 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+			else{
+	redirect('login');
+            }
 		}
+		
 		public function  listgroup(){
 		if($this->session->userdata('admindetails')){
 			
@@ -155,7 +170,11 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+			else{
+	redirect('login');
+                  }
 		}
+		
 		public function  addtemplate(){
 		if($this->session->userdata('admindetails')){
 			
@@ -164,7 +183,11 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+			else{
+	redirect('login');
+                  }
 		}
+		
 		public function  listtemplate(){
 		if($this->session->userdata('admindetails')){
 			$msglist= $this->Admin_model->get_all_templates();
@@ -183,7 +206,11 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+			else{
+	redirect('login');
+              }
 		}
+		
 		public function  listplan(){
 		if($this->session->userdata('admindetails')){
 			$planlist= $this->Admin_model->get_all_plans();
@@ -202,7 +229,12 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+			else{
+	redirect('login');
+                }
 		}
+		
+		
 		
 		public function  reports(){
 		if($this->session->userdata('admindetails')){
@@ -212,6 +244,9 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			
 		}
+		else{
+	redirect('login');
+                }
 		}
 		public function savegroup(){
 			if($this->session->userdata('admindetails')){
@@ -352,7 +387,7 @@ if(!empty($data)) {
 			$status=$this->Admin_model->deactivate_group($gid);
 			//echo $this->db->last_query();exit;
 			if($status==1){
-				$this->session->set_flashdata('success','group deactivated successfully ');
+				$this->session->set_flashdata('success','group deleted successfully ');
 					redirect('admin/listgroup');
 				
 			}
@@ -565,11 +600,11 @@ public function delete_message(){
     $mid=base64_decode($this->uri->segment(3));	
 	$status=$this->Admin_model->deactivate_message($mid);
 	if($status==1){
-		$this->session->set_flashdata('success','Message deactivated successfully');
+		$this->session->set_flashdata('success','Message deleted successfully');
 		redirect('admin/listtemplate');
 	}
 	else{
-		$this->session->set_flashdata('error','Message not deactivated ');
+		$this->session->set_flashdata('error','Message not deleted ');
 		redirect('admin/listtemplate');
 		}
 	}else{

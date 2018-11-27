@@ -35,13 +35,13 @@
                         <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/listtemplate') ?>">List</a></li>
                     </ul>
                 </li>
-				<li class="menu-item-has-children dropdown">
+			<!--	<li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-comments"></i>Plan Type</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/addplan') ?>">Add</a></li>
                         <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/listplan') ?>">List</a></li>
                     </ul>
-                </li>
+                </li>-->
               <!--  <li>
                     <a href="<?php echo base_url('admin/reports') ?>"> <i class="menu-icon fa fa-file"></i>Reports</a>
                 </li>-->

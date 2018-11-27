@@ -44,6 +44,7 @@ class Admin_model extends CI_Model
 		$this->db->join('group_numbers','group_numbers.group_id=group_tab.group_id','left');
 		$this->db->where('group_tab.status',1);
 		$this->db->group_by('group_tab.group_id,group_tab.group_name');
+		$this->db->order_by('created_time','desc');
 		return $this->db->get()->result();
 	}
 	public function get_group_details($id){
@@ -83,6 +84,7 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			$this->db->select('*');
 			$this->db->from('message_template');
 			$this->db->where('status',1);
+			$this->db->order_by('created_date','desc');
 			return $this->db->get()->result();
 		}
 		public function get_template($tid){

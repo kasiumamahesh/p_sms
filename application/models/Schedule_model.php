@@ -49,6 +49,7 @@ $sid=$this->db->insert_id();
 		$this->db->where('schedule_tab.end_date>=',$cdate);
 		$this->db->where('s_status',1);
 		$this->db->group_by('message_template.template_content,group_tab.group_id');
+		$this->db->order_by('created_at','desc');
 		return $this->db->get()->result();
 	}
 	public function get_schedule($sid){

@@ -54,10 +54,7 @@
                                             <td>Email Id</td>
                                             <td><?php echo $admin->login_email;?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Password</td>
-                                            <td><?php echo $admin->org_password;?></td>
-                                        </tr>
+                                       
                                         <tr>
                                             <td>Phone Number</td>
                                             <td><?php echo $admin->mobile_no;?></td>
