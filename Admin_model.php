@@ -148,7 +148,6 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			$this->db->select('group_name');
 			$this->db->from('group_tab');
 			$this->db->where('group_id !=',$gid);
-			$this->db->where('status =',1);
 			$gnames= $this->db->get()->result_array();
 			$group_names = array_column($gnames, 'group_name');
 			//print_r($group_names);exit;
@@ -166,7 +165,6 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			$this->db->select('template_name');
 			$this->db->from('message_template');
 			$this->db->where('template_id !=',$tid);
-			$this->db->where('status =',1);
 			$tnames= $this->db->get()->result_array();
 			$temp_names = array_column($tnames, 'template_name');
 			//print_r($group_names);exit;
@@ -257,35 +255,5 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 			return 1;
 			
 		}
-	public function unique_group($name){
-		$this->db->select('*');
-		$this->db->from('group_tab');
-		$this->db->where('status =',1);
-		$this->db->where('group_name =',$name);
-		
-		
-		return $this->db->get()->result()?1:0;
-		
-	}
-	public function unique_message($name){
-		$this->db->select('*');
-		$this->db->from('message_template');
-		$this->db->where('status =',1);
-		$this->db->where('template_name =',$name);
-		
-		
-		return $this->db->get()->result()?1:0;
-		
-	}
-	public function unique_plan($name){
-		$this->db->select('*');
-		$this->db->from('sms_plan_type');
-		$this->db->where('status =',1);
-		$this->db->where('plan_name =',$name);
-		
-		
-		return $this->db->get()->result()?1:0;
-		
-	}
 	
 	}

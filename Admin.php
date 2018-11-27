@@ -216,7 +216,7 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 		public function savegroup(){
 			if($this->session->userdata('admindetails')){
 
-				$this->form_validation->set_rules('ag_name', 'group name', 'required');
+				$this->form_validation->set_rules('ag_name', 'group name', 'required|is_unique[group_tab.group_name]');
 	            $this->form_validation->set_rules('ag_contacts', 'contact number ', 'required');
 	          if ($this->form_validation->run() == FALSE)
                 {
@@ -224,16 +224,8 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
                     redirect('admin/addgroup');
 
                }
-			   $groupname=$this->input->post('ag_name');
+			   				$groupname=$this->input->post('ag_name');
 			
-			   $flag=$this->Admin_model->unique_group($groupname);
-			   if($flag==1){
-				   $this->session->set_flashdata('error','group name already existed');
-                    redirect('admin/addgroup');
-				   
-			   }
-			   
-			   				
 				$cont_numbers=$this->input->post('ag_contacts');
 				$arr_numbers=explode(',',$cont_numbers);
 				//echo '<pre>'; print_r($arr_numbers);exit;
@@ -371,21 +363,15 @@ if(!empty($data)) {
 		{
 			$msg_name=$this->input->post('am_name');
 			$msg_content=$this->input->post('am_message');
-			$this->form_validation->set_rules('am_name', 'template name', 'required');
+			$this->form_validation->set_rules('am_name', 'template name', 'required|is_unique[message_template.template_name]');
 	  $this->form_validation->set_rules('am_message', 'message content', 'required');
 	 
 	   if ($this->form_validation->run() == FALSE)
                 {
           $this->session->set_flashdata('error',validation_errors());
-                    redirect('admin/addtemplate');
+                    redirect('admin/addgroup');
 
                }
-			   $flag=$this->Admin_model->unique_message($msg_name);
-			   if($flag==1){
-				   $this->session->set_flashdata('error','message name already existed');
-                    redirect('admin/addtemplate');
-				   
-			   }
 			$data=array('template_name'=>$msg_name,'template_content'=>$msg_content);
 			$status=$this->Admin_model->message_save($data);
 			if($status==1){
@@ -714,6 +700,7 @@ public function new_password(){
 			  
 }
 }
+
 public  function forgotpass(){
 	$post=$this->input->post();
 		$check_login=$this->Admin_model->get_email_details_check($post['email']);
@@ -742,7 +729,6 @@ public  function forgotpass(){
 				redirect('login');
 			}
 }
-
 
 }
 

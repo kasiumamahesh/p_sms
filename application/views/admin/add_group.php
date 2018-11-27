@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Contact Number</label>
+                                        <label>Contact Number(Contact Numbers are seperated with comma)</label>
                                         <textarea id="ag_contacts" name="ag_contacts" placeholder="Enter numbers here..." class="form-control"></textarea>
                                     </div>
                                 </div>
@@ -56,8 +56,8 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<script type='javascript'>
-    $(document).ready(function() { 
+<script>
+    
     $('#add_group').bootstrapValidator({
 
         fields: {
@@ -76,7 +76,7 @@
                 }
             }
             }
-        });
+        
 
     });
 </script>

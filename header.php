@@ -21,10 +21,6 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 	 <script src="<?php echo base_url().'assets/js/jquery-2.1.4.min.js';?>"></script>
-	  <script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>
-   
-		 <script src="<?php echo base_url().'assets/js/bootstrapValidator.min.js';?>"></script>
-
     
 </head>
 
@@ -39,24 +35,19 @@
    <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
 </div>
 <?php endif; ?>
- <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="smallmodalLabel">Small Modal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                  fdafdafdf
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary">Ok</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="modal fade" id="delete-modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>    <a  class="btn btn-primary" data-dismiss="modal">Ok</a>
+        </div> 
+        </div>
+      </div>
+    </div>
