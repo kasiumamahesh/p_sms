@@ -1,4 +1,3 @@
-<?php include('header.php'); ?>
 
 
 <body class="" style="background-image:url('assets/img/mobile-background.png');background-size:cover;">
@@ -10,10 +9,10 @@
                 </a>
             </div>
             <div class="login-form">
-                <form action="" method="" id="forgot_pass">
+                <form action="<?php echo base_url('admin/forgotpass'); ?>" method="post" id="forgot_pass">
                     <div class="form-group">
                         <label>Email address</label>
-                        <input type="email" id="fp_email" name="fp_email" class="form-control" placeholder="Email">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-flat m-b-15">Submit</button>
                 </form>
@@ -23,14 +22,13 @@
 </body>
 
 
-<?php include('footer.php'); ?>
 
 <script>
     $(document).ready(function() {
     $('#forgot_pass').bootstrapValidator({
 
         fields: {
-            fp_email: {
+            email: {
                 validators: {
                     notEmpty: {
                         message: 'Please enter email'

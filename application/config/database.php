@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'psms',
+	'hostname' => '166.62.26.2',
+	'username' => 'sms_admin_db',
+	'password' => 'sms_admin_db',
+	'database' => 'sms_admin_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

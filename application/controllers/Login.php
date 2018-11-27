@@ -47,15 +47,11 @@ public function logout(){
 }
 public function forgot_password(){
 	if(!$this->session->userdata('admindetails')){
-		//echo $this->input->cookie('username'); exit;
-			
-	$this->load->view('admin/header');
-	$this->load->view('admin/forgot_password');
-	$this->load->view('admin/footer');
-		
+		$this->load->view('admin/header');
+		$this->load->view('admin/forgot_password');
+		$this->load->view('admin/footer');
 	}else{
-
-	redirect('admin/dashboard');
+		redirect('admin/dashboard');
 	}
 	
 	
