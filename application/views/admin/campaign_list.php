@@ -40,7 +40,7 @@
 	<div class="default-tab">
 	
 		<div class="tab-content pl-3 pt-2" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			<div class="tab-pane  show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 				 <div class="table-responsive">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
@@ -92,7 +92,7 @@
                     
                         </div>
 			</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			<div class="tab-pane " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 				 <div class="table-responsive">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
