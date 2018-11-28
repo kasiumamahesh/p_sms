@@ -66,22 +66,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Group</label>
-                                        <select class="form-control" name="gid[]" id="" multiple>
-                                              <option value="" disabled selected>Select</option>
+									<select  name="gid[]" data-placeholder="Select Multiple Groups" multiple class="standardSelect form-control">
                                             	<?php foreach($groups as $group):?>
                                             <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
 											<?php endforeach;?>
-                                           <!-- <option value="">xxxxx</option>
-                                            <option value="">xxxxx</option>-->
+                                          
                                         </select>
                                     </div>
                                 </div>
-                               <!-- <div class="col-md-6">
-                                    <div class="form-group" name="" id="">
-                                        <label class="form-control-label">Group</label>
-                                        <input type="text" id="" name="" placeholder="Enter group name" class="form-control">
-                                    </div>
-                                </div>-->
+                              
                                 <div class="col-md-6">
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Message</label>
@@ -96,7 +89,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group" name="" id="">
 											<input type="checkbox" id='checkmsg' name="" value="" <?php if($msgstatus==1){ echo 'checked';} ?>>
 
@@ -114,7 +107,15 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
-
+ <script>
+        jQuery(document).ready(function() {
+            jQuery(".standardSelect").chosen({
+                disable_search_threshold: 10,
+                no_results_text: "Oops, nothing found!",
+                width: "100%"
+            });
+        });
+    </script>
 <script>
   
 	 

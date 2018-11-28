@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="<?php echo base_url().'assets/img/fav.png';?>">
 
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/normalize.css'?>">
-    <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>"> 
+	
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrapValidator.min.css';?>">
     
     <link rel="stylesheet" href="<?php echo base_url().'assets/css/font-awesome.min.css';?>">
@@ -24,7 +25,7 @@
 	  <script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>
    
 		 <script src="<?php echo base_url().'assets/js/bootstrapValidator.min.js';?>"></script>
-
+<link rel="stylesheet" href="<?php echo base_url().'assets/css/chosen.min.css';?>">
     
 </head>
 

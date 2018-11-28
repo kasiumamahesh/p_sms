@@ -14,7 +14,8 @@
     
     <script src="<?php echo base_url().'assets/js/datatables.min.js';?>"></script>
     <script src="<?php echo base_url().'assets/js/dataTables.bootstrap.min.js';?>"></script>
-    <script src="<?php echo base_url().'assets/js/datatables-init.js';?>"></script>
+    <script src="<?php echo base_url().'assets/js/datatables-init.js';?>"></script>  
+	<script src="<?php echo base_url().'assets/js/chosen.jquery.min.js';?>"></script>
 	
 
 </body>
