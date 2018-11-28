@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="profile.php" class="btn btn-sm btn-info">
+                        <a href="<?php echo base_url('admin/profile');?>" class="btn btn-sm btn-info">
                             <i class="fa fa-chevron-left"></i>
                         </a>
                         <strong class="card-title">Edit Profile</strong>
@@ -78,7 +78,7 @@
 
 
 <script>
-    $(document).ready(function() {
+    
     $('#edit_profile').bootstrapValidator({
 
         fields: {
@@ -107,7 +107,7 @@
 				validators: {
                     file: {
                        extension: 'jpg,png,jpeg',
-                    type: 'image/jpg, image/png,image/jpeg',
+                    type: 'image/jpg,image/png,image/jpeg',
 					message: 'file type format is not valid'
                     }
                 }
@@ -115,7 +115,7 @@
 				
 			}
             }
-        })
+        });
 
-    });
+    
 </script>

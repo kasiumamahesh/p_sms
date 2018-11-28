@@ -122,9 +122,9 @@ class Schedule extends In_frontend{
 	}
 	public function run_schedules(){
 		date_default_timezone_set('Asia/Kolkata');
-		//$ctime=date('H:i');
+		$ctime=date('H:i');
 	
-	$ctime='14:00';
+	
 		$ctime=$ctime.':00';
 		
 		$cdate=date('Y-m-d');
