@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mx-auto d-block">
-                                    <img class="rounded-circle mx-auto d-block" src="<?php 
+                                    <img style="width:100px;height:100px;" class="rounded-circle mx-auto d-block" src="<?php 
 						$adm=$this->session->userdata('admindetails');
 						$pic=$adm['profile_pic'];
 						if($adm['profile_pic']==''){

@@ -22,7 +22,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 	 <script src="<?php echo base_url().'assets/js/jquery-2.1.4.min.js';?>"></script>
-	  <script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>
+	  <!--<script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>-->
    
 		 <script src="<?php echo base_url().'assets/js/bootstrapValidator.min.js';?>"></script>
 <link rel="stylesheet" href="<?php echo base_url().'assets/css/chosen.min.css';?>">
@@ -61,3 +61,4 @@
                         </div>
                     </div>
                 </div>
+				

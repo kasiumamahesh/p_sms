@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" id="lf_password" name="password" class="form-control"  value="<?php if($this->input->cookie('remember')){
+                        <input type="password" id="lf_password" name="password" placeholder="Password"  class="form-control"  value="<?php if($this->input->cookie('remember')){
 							echo $this->input->cookie('password');
 						}?>">
                     </div>

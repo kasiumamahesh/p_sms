@@ -1,3 +1,4 @@
+
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -6,7 +7,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="<?php echo base_url('admin');?>">Prachatech</a>
-            <a class="navbar-brand hidden" href="index.php"><img src="assets/img/fav.png" alt="Prachatech"></a>
+            <a class="navbar-brand hidden" href="<?php echo base_url('admin');?>"><img src="<?php echo base_url('assets/img/fav.png');?>" alt="Prachatech"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -35,16 +36,7 @@
                         <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/listtemplate') ?>">List</a></li>
                     </ul>
                 </li>
-			<!--	<li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-comments"></i>Plan Type</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/addplan') ?>">Add</a></li>
-                        <li><i class="menu-icon fa fa-angle-right"></i><a href="<?php echo base_url('admin/listplan') ?>">List</a></li>
-                    </ul>
-                </li>-->
-              <!--  <li>
-                    <a href="<?php echo base_url('admin/reports') ?>"> <i class="menu-icon fa fa-file"></i>Reports</a>
-                </li>-->
+			
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

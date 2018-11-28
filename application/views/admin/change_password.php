@@ -64,7 +64,7 @@
 
 
 <script>
-	$(document).ready(function() {
+
     $('#change_password').bootstrapValidator({
         
         fields: {
@@ -92,5 +92,5 @@
             }
         })
      
-});
+
 </script>
