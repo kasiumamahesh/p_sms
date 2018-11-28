@@ -68,7 +68,8 @@
 							
                                     <div class="form-group" name="" id="">
                                         <label class="form-control-label">Select Group</label>
-                                        	<select  name="gid[]" data-placeholder="Select Multiple Groups" multiple class="standardSelect form-control">
+                                        	<select id='testing' name="gid[]"  placeholder="Select Multiple Groups" multiple class="standardSelect form-control">
+											
 											<?php foreach($groups as $group):?>
                                             <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
 											<?php endforeach;?>
@@ -134,6 +135,7 @@
 		
 	}); 
 	$('#add_schedule').on('submit',function(){
+		
 		sdate=$('#as_sdate').val();
 		edate=$('#as_edate').val();
 		if(new Date(edate) < new Date(sdate))

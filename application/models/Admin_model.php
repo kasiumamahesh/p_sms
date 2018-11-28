@@ -289,5 +289,15 @@ $this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_nu
 		return $this->db->get()->result()?1:0;
 		
 	}
+	public function schedule_groups_list($sid){
+		
+		$this->db->select('group_tab.group_id,group_tab.group_name');
+		$this->db->from('schedule_groups');
+		$this->db->join('group_tab','group_tab.group_id=schedule_groups.group_id');
+		$this->db->where('schedule_id=',$sid);
+		$groupnames=$this->db->get()->result_array();
+		$groupids = array_column($groupnames, 'group_id');
+	    return $groupids;
+	}
 	
 	}

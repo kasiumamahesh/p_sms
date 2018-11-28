@@ -68,7 +68,8 @@
                                         <label class="form-control-label">Select Group</label>
 									<select  name="gid[]" data-placeholder="Select Multiple Groups" multiple class="standardSelect form-control">
                                             	<?php foreach($groups as $group):?>
-                                            <option value="<?php echo $group->group_id; ?>"><?php echo $group->group_name;?></option>
+                                            <option value="<?php echo $group->group_id;?>" 
+											<?php if(in_array($group->group_id,$sgroups)){echo 'selected';}?>><?php echo $group->group_name;?></option>
 											<?php endforeach;?>
                                           
                                         </select>

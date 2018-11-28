@@ -170,6 +170,8 @@ class Schedule extends In_frontend{
 		    $data['plans']=$this->Admin_model->get_all_plans();
 			$data['groups']=$this->Admin_model->get_grouplist();
 			$data['msgs']=$this->Admin_model->get_all_templates();
+			$data['sgroups']=$this->Admin_model->schedule_groups_list($sid);
+			
 		$data['sch']=$this->Schedule_model->get_schedule($sid);
 		$mid=$data['sch']->template_id;
 		$temp=$this->Schedule_model->get_message($mid);
@@ -196,6 +198,13 @@ class Schedule extends In_frontend{
 	public function save_edit_campaign(){
 		if($this->session->userdata('admindetails'))
 		{
+			$this->form_validation->set_rules('gid[]', 'group', 'required');
+			 if ($this->form_validation->run() == FALSE)
+                {
+          $this->session->set_flashdata('error',validation_errors());
+                    redirect($_SERVER['HTTP_REFERER']);
+
+               }
 		
 			$planid=$this->input->post('es_type');
 			//echo $planid;exit;
