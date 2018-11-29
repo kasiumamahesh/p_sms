@@ -61,13 +61,14 @@
 										
 											<?php } else{?>
 
-										<div id="morecontacts" style='display:none'>
+										<div class="morecontacts" style='display:none'>
 										<?php echo $number; ?>
 										</div>
 										<?php } $gcount++;
 										}?>
-										<a href="#" id="phonenum " style="color:blue" >Read More</a>
-										
+										<?php if($gcount>3){?>
+										<a href="#" class="phonenum " style="color:blue" data-contact="1">Read More</a>
+										<?php }?>
 										</td>
 										<td><?php echo $gp->cnt;?></td>
 										
@@ -101,8 +102,20 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 <script type="text/javascript">
-$("#phonenum").click(function(){
-    $("#morecontacts").toggle();
+$(".phonenum").click(function(){
+	
+         i=$(this).data("contact");
+		 if(i==1){
+    $(this).closest('tr').find('.morecontacts').css('display','block');
+	$(this).data("contact",0);
+	$(this).text('less ');
+		 }
+		 else{
+			 $(this).closest('tr').find('.morecontacts').css('display','none');
+	$(this).data("contact",1);
+	$(this).text('Read More');
+			 
+		 }
 });
 </script >
 
