@@ -37,6 +37,7 @@
                                         <th>S.No</th>
                                         <th>Name</th>
                                         <th>Contact Numbers</th>
+										<th>group count</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -47,7 +48,24 @@
                                     <tr>
                                         <td><?php echo $count;?></td>
                                         <td><?php echo $gp->group_name;?></td>
-                                        <td><?php echo $gp->cont_numbers ?></td>
+                                        <td>
+										<?php $numbers=explode(',',$gp->cont_numbers);
+										$gcount=1;
+										foreach($numbers as $number){
+											if($gcount<4) {
+										?>
+										<div class='col-md-3'>
+											<?php echo $number; ?>
+										</div>
+											<?php } else{?>
+
+										<div style='display:none'>
+										<?php echo $number; ?>
+										</div>
+										<?php } $gcount++;
+										}?></td>
+										<td><?php echo $gp->cnt;?></td>
+										
                                         <td>
                                           <!--   <a href="#">
                                                 <button type="button" class="btn btn-sm social btn-info">

@@ -38,10 +38,12 @@ class Admin_model extends CI_Model
 		
 	}
 	public function get_grouplist(){
+		$this->db->simple_query('SET SESSION group_concat_max_len=1500000');
 		
-		$this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_numbers.cont_number) cont_numbers ');
+		$this->db->select('group_tab.group_id,group_tab.group_name,GROUP_CONCAT(group_numbers.cont_number) cont_numbers, 
+		count(group_numbers.cont_number) cnt');
 		$this->db->from('group_tab');
-		$this->db->join('group_numbers','group_numbers.group_id=group_tab.group_id','left');
+		$this->db->join('group_numbers','group_numbers.group_id=group_tab.group_id');
 		$this->db->where('group_tab.status',1);
 		$this->db->group_by('group_tab.group_id,group_tab.group_name');
 		$this->db->order_by('created_time','desc');

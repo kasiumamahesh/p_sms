@@ -155,7 +155,8 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			
 			$result=$this->Admin_model->get_grouplist();
 			
-			//echo '<pre>';print_r($result);exit
+			//echo $this->db->last_query();exit;
+			//echo '<pre>';print_r($result);exit;
 			if(count($result)>0){
 				$data['status']=1;
 				$data['grouplist']=$result;
@@ -270,13 +271,15 @@ $this->input->set_cookie('password',$this->input->post('password'),'360000');
 			   
 			   				
 				$cont_numbers=$this->input->post('ag_contacts');
-				$arr_numbers=explode(',',$cont_numbers);
+			
+				$arr_numbers = preg_split('/[\s]+/',$cont_numbers );
 				//echo '<pre>'; print_r($arr_numbers);exit;
+				//$arr_numbers=explode(" ",$cont_numbers);
+				
 				$nums=array();
 				$grpdata=array('group_name'=>$groupname);
 				$group_id=$this->Admin_model->insert_group($grpdata);
-				//echo $group_id; exit;
-				//$data=array();
+			
 			foreach($arr_numbers as $number){
 			 $orgnumber=trim($number);
              if (is_numeric($orgnumber)&&strlen($orgnumber)==10){

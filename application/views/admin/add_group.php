@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Contact Number(Contact Numbers are seperated with comma)</label>
+                                        <label>Contact Number(Contact Numbers must be seperated with space or newline)</label>
                                         <textarea id="ag_contacts" name="ag_contacts" placeholder="Enter numbers here..." class="form-control"></textarea>
                                     </div>
                                 </div>
