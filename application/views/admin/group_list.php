@@ -54,25 +54,26 @@
 										foreach($numbers as $number){
 											if($gcount<4) {
 										?>
-										<div class='col-md-3'>
+										<div class=''>
 											<?php echo $number; ?>
+											
 										</div>
+										
 											<?php } else{?>
 
-										<div style='display:none'>
+										<div class="morecontacts" style='display:none'>
 										<?php echo $number; ?>
 										</div>
 										<?php } $gcount++;
-										}?></td>
+										}?>
+										<button class="phonenum btn btn-primary btn-sm" >Read More</button>
+										
+										</td>
 										<td><?php echo $gp->cnt;?></td>
 										
                                         <td>
-                                          <!--   <a href="#">
-                                                <button type="button" class="btn btn-sm social btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                            </a> -->
-                                            <a href="<?php echo base_url('admin/groupedit/').base64_encode($gp->group_id);?>">
+                                        
+                                            <a id="phone-num" class="text-priamry" href="<?php echo base_url('admin/groupedit/').base64_encode($gp->group_id);?>">
                                                 <button type="button" class="btn btn-sm social btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
@@ -84,50 +85,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                   <!-- <tr>
-                                        <td>2</td>
-                                        <td>xxxxxxxxx</td>
-                                        <td>98xxxxxxx2</td>
-                                        <td>
-                                            <a href="#">
-                                                <button type="button" class="btn btn-sm social btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                            </a>
-                                            <a href="edit_group.php">
-                                                <button type="button" class="btn btn-sm social btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                            </a>
-                                            <a href="#">
-                                                <button type="button" class="btn btn-sm social btn-danger">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>xxxxxxxxx</td>
-                                        <td>98xxxxxxx2</td>
-                                        <td>
-                                            <a href="#">
-                                                <button type="button" class="btn btn-sm social btn-info">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                            </a>
-                                            <a href="edit_group.php">
-                                                <button type="button" class="btn btn-sm social btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                            </a>
-                                            <a href="#">
-                                                <button type="button" class="btn btn-sm social btn-danger">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr> -->
+                                  
 									<?php $count++; endforeach;}else{echo 'no groups ';}?>
 									
                                 </tbody>
@@ -142,6 +100,12 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script type="text/javascript">
+$(".phonenum").click(function(){
+    $(".morecontacts").toggle();
+});
+</script >
+
 <script type="text/javascript">
     $('.confirmation').on('click', function () {
         return confirm('Are you sure?');
