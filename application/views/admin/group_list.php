@@ -66,7 +66,7 @@
 										</div>
 										<?php } $gcount++;
 										}?>
-										<button class="phonenum btn btn-primary btn-sm" >Read More</button>
+										<a class="phonenum " style="color:blue" >Read More</a>
 										
 										</td>
 										<td><?php echo $gp->cnt;?></td>
